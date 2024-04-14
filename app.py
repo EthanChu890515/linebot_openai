@@ -27,7 +27,7 @@ mbti_user_answers = {}
 
 # MBTI 结果
 mbti_results = {
-    "INTJ": "你可能是一个獨立、思想深邃的人，善於分析和解決問題。",
+    "INTJ": "你可能是一个獨立、思想深邃的人，善於分析和解决问题。",
     "INTP": "你可能是一个理性、好奇的人，喜歡獨自探索和思考。",
     "ENTJ": "你可能是一个果斷、領導能力强的人，善於組織和規劃。",
     "ENTP": "你可能是一个充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
@@ -56,10 +56,16 @@ def handle_message(event):
 
     current_question_index = len(mbti_user_answers[user_id])
     if current_question_index < len(mbti_questions):
+        # 檢查用戶回答的格式是否正確
+        if msg.lower() not in ['a', 'b']:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage("請回答'A'或'B'。"))
+            return
         mbti_user_answers[user_id].append(msg)
         next_question = mbti_questions[current_question_index]
         line_bot_api.reply_message(event.reply_token, TextSendMessage(next_question))
     else:
+        # 清空用戶回答，重新開始 MBTI 測試
+        mbti_user_answers[user_id] = []
         # 计算 MBTI 结果
         mbti_type = calculate_mbti(mbti_user_answers[user_id])
         if mbti_type in mbti_results:
@@ -69,30 +75,30 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(result_message))
 
 # 计算 MBTI 结果的函数
+# 计算 MBTI 结果的函数
 def calculate_mbti(answers):
     mbti_type = ""
-    for i, ans in enumerate(answers):
-        if i == 0:  # 第一題（E/I）
-            if ans.lower() == "a":
-                mbti_type += "E"
-            elif ans.lower() == "b":
-                mbti_type += "I"
-        elif i == 1:  # 第二題（N/S）
-            if ans.lower() == "a":
-                mbti_type += "N"
-            elif ans.lower() == "b":
-                mbti_type += "S"
-        elif i == 2:  # 第三題（T/F）
-            if ans.lower() == "a":
-                mbti_type += "T"
-            elif ans.lower() == "b":
-                mbti_type += "F"
-        elif i == 3:  # 第四題（J/P）
-            if ans.lower() == "a":
-                mbti_type += "J"
-            elif ans.lower() == "b":
-                mbti_type += "P"
+    for i in range(len(answers)):
+        if i == 0:
+            if answers[i].lower() == 'a':
+                mbti_type += 'E'
+            else:
+                mbti_type += 'I'
+        elif i == 1:
+            if answers[i].lower() == 'a':
+                mbti_type += 'N'
+            else:
+                mbti_type += 'S'
+        elif i == 2:
+            if answers[i].lower() == 'a':
+                mbti_type += 'T'
+            else:
+                mbti_type += 'F'
+        elif i == 3:
+            if answers[i].lower() == 'a':
+                mbti_type += 'J'
+            else:
+                mbti_type += 'P'
     return mbti_type
 
-if __name__ == "__main__":
-    app.run()
+
