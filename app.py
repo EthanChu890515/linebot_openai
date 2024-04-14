@@ -27,7 +27,7 @@ mbti_user_answers = {}
 
 # MBTI 结果
 mbti_results = {
-    "INTJ": "你可能是一个獨立、思想深邃的人，善於分析和解决问题。",
+    "INTJ": "你可能是一个獨立、思想深邃的人，善於分析和解決問題。",
     "INTP": "你可能是一个理性、好奇的人，喜歡獨自探索和思考。",
     "ENTJ": "你可能是一个果斷、領導能力强的人，善於組織和規劃。",
     "ENTP": "你可能是一个充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
@@ -70,12 +70,29 @@ def handle_message(event):
 
 # 计算 MBTI 结果的函数
 def calculate_mbti(answers):
-    # 这里可以根据用户的回答计算出 MBTI 类型
-    # 例如，根据每个问题的答案，计算出用户的四个字母组合
-    # 然后根据这个组合来确定用户的 MBTI 类型
-    # 这里仅作示例，具体逻辑需要根据实际情况来设计
-    return "INTJ"  # 返回一个假设的 MBTI 类型
+    mbti_type = ""
+    for i, ans in enumerate(answers):
+        if i == 0:  # 第一題（E/I）
+            if ans.lower() == "a":
+                mbti_type += "E"
+            elif ans.lower() == "b":
+                mbti_type += "I"
+        elif i == 1:  # 第二題（N/S）
+            if ans.lower() == "a":
+                mbti_type += "N"
+            elif ans.lower() == "b":
+                mbti_type += "S"
+        elif i == 2:  # 第三題（T/F）
+            if ans.lower() == "a":
+                mbti_type += "T"
+            elif ans.lower() == "b":
+                mbti_type += "F"
+        elif i == 3:  # 第四題（J/P）
+            if ans.lower() == "a":
+                mbti_type += "J"
+            elif ans.lower() == "b":
+                mbti_type += "P"
+    return mbti_type
 
 if __name__ == "__main__":
     app.run()
-
