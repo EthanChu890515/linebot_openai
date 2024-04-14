@@ -25,7 +25,7 @@ mbti_questions = [
 # 處存用戶回答的字典
 mbti_user_answers = {}
 
-# MBTI 结果
+# MBTI 结果和描述
 mbti_results = {
     "INTJ": "你可能是一个獨立、思想深邃的人，善於分析和解决问题。",
     "INTP": "你可能是一个理性、好奇的人，喜歡獨自探索和思考。",
@@ -75,7 +75,6 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(result_message))
 
 # 计算 MBTI 结果的函数
-# 计算 MBTI 结果的函数
 def calculate_mbti(answers):
     mbti_type = ""
     for i in range(len(answers)):
@@ -101,4 +100,6 @@ def calculate_mbti(answers):
                 mbti_type += 'P'
     return mbti_type
 
+if __name__ == "__main__":
+    app.run()
 
