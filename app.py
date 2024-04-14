@@ -27,7 +27,7 @@ mbti_user_answers = {}
 
 # MBTI 结果和描述
 mbti_results = {
-    "INTJ": "你可能是一个獨立、思想深邃的人，善於分析和解决问题。",
+    "INTJ": "你可能是一个獨立、思想深邃的人，善於分析和解決问题。",
     "INTP": "你可能是一个理性、好奇的人，喜歡獨自探索和思考。",
     "ENTJ": "你可能是一个果斷、領導能力强的人，善於組織和規劃。",
     "ENTP": "你可能是一个充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
@@ -56,16 +56,13 @@ def handle_message(event):
 
     current_question_index = len(mbti_user_answers[user_id])
     if current_question_index < len(mbti_questions):
-        # 檢查用戶回答的格式是否正確
         if msg.lower() not in ['a', 'b']:
             line_bot_api.reply_message(event.reply_token, TextSendMessage("請回答'A'或'B'。"))
             return
-        mbti_user_answers[user_id].append(msg)
+        mbti_user_answers[user_id].append(msg.lower())
         next_question = mbti_questions[current_question_index]
         line_bot_api.reply_message(event.reply_token, TextSendMessage(next_question))
     else:
-        # 清空用戶回答，重新開始 MBTI 測試
-        mbti_user_answers[user_id] = []
         # 计算 MBTI 结果
         mbti_type = calculate_mbti(mbti_user_answers[user_id])
         if mbti_type in mbti_results:
@@ -79,22 +76,22 @@ def calculate_mbti(answers):
     mbti_type = ""
     for i in range(len(answers)):
         if i == 0:
-            if answers[i].lower() == 'a':
+            if answers[i] == 'a':
                 mbti_type += 'E'
             else:
                 mbti_type += 'I'
         elif i == 1:
-            if answers[i].lower() == 'a':
+            if answers[i] == 'a':
                 mbti_type += 'N'
             else:
                 mbti_type += 'S'
         elif i == 2:
-            if answers[i].lower() == 'a':
+            if answers[i] == 'a':
                 mbti_type += 'T'
             else:
                 mbti_type += 'F'
         elif i == 3:
-            if answers[i].lower() == 'a':
+            if answers[i] == 'a':
                 mbti_type += 'J'
             else:
                 mbti_type += 'P'
