@@ -69,6 +69,12 @@ def handle_message(event):
         mbti_user_answers[user_id] = []
 
     current_question_index = len(mbti_user_answers[user_id])
+
+    # 如果用戶重新開始新的一輪測試，清除之前的回答
+    if msg.lower() == '重新開始測試':
+        mbti_user_answers[user_id] = []
+        current_question_index = 0
+
     if current_question_index < len(mbti_questions):
         if msg.lower() not in ['a', 'b']:
             line_bot_api.reply_message(event.reply_token, TextSendMessage("請回答'A'或'B'。"))
@@ -85,14 +91,13 @@ def handle_message(event):
             qr_image = generate_qr_code(result_message)
             # 将 QR Code 图片发送给用户
             image_message = ImageSendMessage(
-                original_content_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4',
-                preview_image_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4'
+                original_content_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4',  # 替換成你生成的 QR Code 圖片的 URL
+                preview_image_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4'  # 同上
             )
             line_bot_api.reply_message(event.reply_token, image_message)
-            return
         else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage("無法計算您的 MBTI 結果。請重新開始測試。"))
-            mbti_user_answers[user_id] = []  # 清除用戶答案，重新開始測試
+            result_message = "無法計算您的 MBTI 結果。請重新開始測試。"
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(result_message))
 
 # 计算 MBTI 结果的函数
 def calculate_mbti(answers):
@@ -113,6 +118,11 @@ def calculate_mbti(answers):
                 mbti_type += 'T'
             else:
                 mbti_type += 'F'
+        elif i == 3:
+            if answers[i] == 'a':
+                mbti_type += 'J'
+            else:
+                mbti_type += 'P'
     return mbti_type  # 返回 MBTI 结果
 
 if __name__ == "__main__":
