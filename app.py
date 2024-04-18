@@ -84,7 +84,11 @@ def handle_message(event):
             # 生成对应的 MBTI 结果的 QR Code 图片
             qr_image = generate_qr_code(result_message)
             # 将 QR Code 图片发送给用户
-            line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url='https://www.instagram.com/ar/431477839572496?utm_source=qr', preview_image_url='https://www.instagram.com/ar/431477839572496?utm_source=qr'))
+            image_message = ImageSendMessage(
+                original_content_url='https://drive.google.com/file/d/1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4/view?usp=drive_link',  # 用您生成的QR代码图像的URL替换此处
+                preview_image_url='https://drive.google.com/file/d/1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4/view?usp=drive_link'  # 同上
+            )
+            line_bot_api.reply_message(event.reply_token, image_message)
             return  # 返回，避免继续执行下面的代码
         else:
             result_message = "無法計算你的 MBTI 结果。"
@@ -93,24 +97,5 @@ def handle_message(event):
 # 计算 MBTI 结果的函数
 def calculate_mbti(answers):
     mbti_type = ""
-    for i in range(len(answers)):
-        if i == 0:
-            if answers[i] == 'a':
-                mbti_type += 'E'
-            else:
-                mbti_type += 'I'
-        elif i == 1:
-            if answers[i] == 'a':
-                mbti_type += 'N'
-            else:
-                mbti_type += 'S'
-        elif i == 2:
-            if answers[i] == 'a':
-                mbti_type += 'T'
-            else:
-                mbti_type += 'F'
-    return mbti_type  # 返回 MBTI 结果
-
-if __name__ == "__main__":
-    app.run()
+    for i
 
