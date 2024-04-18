@@ -85,8 +85,8 @@ def handle_message(event):
             qr_image = generate_qr_code(result_message)
             # 将 QR Code 图片发送给用户
             image_message = ImageSendMessage(
-                original_content_url='https://drive.google.com/file/d/1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4/view?usp=drive_link',  # 用您生成的QR代码图像的URL替换此处
-                preview_image_url='https://drive.google.com/file/d/1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4/view?usp=drive_link'  # 同上
+                original_content_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4',  # 用您生成的QR代码图像的URL替换此处
+                preview_image_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4'  # 同上
             )
             line_bot_api.reply_message(event.reply_token, image_message)
             return  # 返回，避免继续执行下面的代码
