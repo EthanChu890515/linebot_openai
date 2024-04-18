@@ -84,7 +84,7 @@ def handle_message(event):
             # 生成对应的 MBTI 结果的 QR Code 图片
             qr_image = generate_qr_code(result_message)
             # 将 QR Code 图片发送给用户
-            line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url='https://www.instagram.com/ar/431477839572496?utm_source=qr', preview_image_url='YOUR_QR_CODE_IMAGE_URL'))
+            line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url='https://www.instagram.com/ar/431477839572496?utm_source=qr', preview_image_url='https://www.instagram.com/ar/431477839572496?utm_source=qr'))
         else:
             result_message = "無法計算你的 MBTI 结果。"
         line_bot_api.reply_message(event.reply_token, TextSendMessage(result_message))
