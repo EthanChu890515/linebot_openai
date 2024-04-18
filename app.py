@@ -110,3 +110,6 @@ def calculate_mbti(answers):
             else:
                 mbti_type += 'F'
 
+if __name__ == "__main__":
+    app.run()
+
