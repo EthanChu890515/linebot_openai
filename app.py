@@ -97,5 +97,23 @@ def handle_message(event):
 # 计算 MBTI 结果的函数
 def calculate_mbti(answers):
     mbti_type = ""
-    for i
+    for i in range(len(answers)):
+        if i == 0:
+            if answers[i] == 'a':
+                mbti_type += 'E'
+            else:
+                mbti_type += 'I'
+        elif i == 1:
+            if answers[i] == 'a':
+                mbti_type += 'N'
+            else:
+                mbti_type += 'S'
+        elif i == 2:
+            if answers[i] == 'a':
+                mbti_type += 'T'
+            else:
+                mbti_type += 'F'
+    return mbti_type  # 返回 MBTI 结果
 
+if __name__ == "__main__":
+    app.run()
