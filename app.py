@@ -11,8 +11,8 @@ import qrcode
 app = Flask(__name__)
 
 # Channel Access Token 和 Channel Secret
-line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
-handler = WebhookHandler('YOUR_CHANNEL_SECRET')
+line_bot_api = LineBotApi('yOBTbdC80uJmcmPQDFW+20TWectJYFzIkXoThbUVsi0Et9jQXecQWnDoK4UzUShO1Q+HoFNimovw1X+zqAhGbaREvHsKm/f0iLIJn9/sP0UWe4I884BgKV+iC5TUKIQRRPA96p02d7OJjoMdnCioowdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('29f84578040cbbb8466a96bcf2c02972')
 
 # MBTI 问卷问题
 mbti_questions = [
