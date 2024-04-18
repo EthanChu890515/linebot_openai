@@ -91,8 +91,8 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, image_message)
             return
         else:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage("無法計算您的 MBTI 結果。請重新開始測試。"))
             mbti_user_answers[user_id] = []  # 清除用戶答案，重新開始測試
-            handle_message(event)  # 重新開始新的一輪測試
 
 # 计算 MBTI 结果的函数
 def calculate_mbti(answers):
