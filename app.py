@@ -85,14 +85,14 @@ def handle_message(event):
             qr_image = generate_qr_code(result_message)
             # 将 QR Code 图片发送给用户
             image_message = ImageSendMessage(
-                original_content_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4',  # 用您生成的QR代码图像的URL替换此处
-                preview_image_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4'  # 同上
+                original_content_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4',
+                preview_image_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4'
             )
             line_bot_api.reply_message(event.reply_token, image_message)
-            return  # 返回，避免继续执行下面的代码
+            return
         else:
-            result_message = "無法計算你的 MBTI 结果。"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(result_message))
+            mbti_user_answers[user_id] = []  # 清除用戶答案，重新開始測試
+            handle_message(event)  # 重新開始新的一輪測試
 
 # 计算 MBTI 结果的函数
 def calculate_mbti(answers):
@@ -117,3 +117,4 @@ def calculate_mbti(answers):
 
 if __name__ == "__main__":
     app.run()
+
