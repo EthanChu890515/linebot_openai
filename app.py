@@ -109,6 +109,7 @@ def calculate_mbti(answers):
                 mbti_type += 'T'
             else:
                 mbti_type += 'F'
+    return mbti_type  # 返回 MBTI 结果
 
 if __name__ == "__main__":
     app.run()
