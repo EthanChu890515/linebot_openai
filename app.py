@@ -6,7 +6,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-import os
+import qrcode
 
 app = Flask(__name__)
 
@@ -34,7 +34,21 @@ mbti_results = {
     # 其他 MBTI 類型的結果...
 }
 
-# 處理 LINE Webhook 请求
+# 生成 QR Code 图片的函数
+def generate_qr_code(content):
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(content)
+    qr.make(fit=True)
+
+    qr_image = qr.make_image(fill_color="black", back_color="white")
+    return qr_image
+
+# 处理 LINE Webhook 请求
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
@@ -45,7 +59,7 @@ def callback():
         abort(400)
     return 'OK'
 
-# 處理文本消息事件
+# 处理文本消息事件
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_id = event.source.user_id
@@ -67,6 +81,10 @@ def handle_message(event):
         mbti_type = calculate_mbti(mbti_user_answers[user_id])
         if mbti_type in mbti_results:
             result_message = mbti_results[mbti_type]
+            # 生成对应的 MBTI 结果的 QR Code 图片
+            qr_image = generate_qr_code(result_message)
+            # 将 QR Code 图片发送给用户
+            line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url='https://www.instagram.com/ar/431477839572496?utm_source=qr', preview_image_url='YOUR_QR_CODE_IMAGE_URL'))
         else:
             result_message = "無法計算你的 MBTI 结果。"
         line_bot_api.reply_message(event.reply_token, TextSendMessage(result_message))
@@ -99,4 +117,3 @@ def calculate_mbti(answers):
 
 if __name__ == "__main__":
     app.run()
-
