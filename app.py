@@ -11,8 +11,8 @@ import qrcode
 app = Flask(__name__)
 
 # Channel Access Token 和 Channel Secret
-line_bot_api = LineBotApi('yOBTbdC80uJmcmPQDFW+20TWectJYFzIkXoThbUVsi0Et9jQXecQWnDoK4UzUShO1Q+HoFNimovw1X+zqAhGbaREvHsKm/f0iLIJn9/sP0UWe4I884BgKV+iC5TUKIQRRPA96p02d7OJjoMdnCioowdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('29f84578040cbbb8466a96bcf2c02972')
+line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
+handler = WebhookHandler('YOUR_CHANNEL_SECRET')
 
 # MBTI 问卷问题
 mbti_questions = [
@@ -85,6 +85,7 @@ def handle_message(event):
             qr_image = generate_qr_code(result_message)
             # 将 QR Code 图片发送给用户
             line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url='https://www.instagram.com/ar/431477839572496?utm_source=qr', preview_image_url='https://www.instagram.com/ar/431477839572496?utm_source=qr'))
+            return  # 返回，避免继续执行下面的代码
         else:
             result_message = "無法計算你的 MBTI 结果。"
         line_bot_api.reply_message(event.reply_token, TextSendMessage(result_message))
@@ -108,12 +109,4 @@ def calculate_mbti(answers):
                 mbti_type += 'T'
             else:
                 mbti_type += 'F'
-        elif i == 3:
-            if answers[i] == 'a':
-                mbti_type += 'J'
-            else:
-                mbti_type += 'P'
-    return mbti_type
 
-if __name__ == "__main__":
-    app.run()
