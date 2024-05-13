@@ -6,7 +6,6 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-import qrcode
 
 app = Flask(__name__)
 
@@ -33,20 +32,6 @@ mbti_results = {
     "ENTP": "你可能是一个充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
     # 其他 MBTI 類型的結果...
 }
-
-# 生成 QR Code 图片的函数
-def generate_qr_code(content):
-    qr = qrcode.QRCode(
-        version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=10,
-        border=4,
-    )
-    qr.add_data(content)
-    qr.make(fit=True)
-
-    qr_image = qr.make_image(fill_color="black", back_color="white")
-    return qr_image
 
 # 处理 LINE Webhook 请求
 @app.route("/callback", methods=['POST'])
@@ -87,12 +72,10 @@ def handle_message(event):
         mbti_type = calculate_mbti(mbti_user_answers[user_id])
         if mbti_type in mbti_results:
             result_message = mbti_results[mbti_type]
-            # 生成对应的 MBTI 结果的 QR Code 图片
-            qr_image = generate_qr_code(result_message)
-            # 将 QR Code 图片发送给用户
+            # 发送 MBTI 结果的图像
             image_message = ImageSendMessage(
-                original_content_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4',  # 替換成你生成的 QR Code 圖片的 URL
-                preview_image_url='https://drive.google.com/uc?id=1fVpwhLP9bjW_YaWu0k5RiMO80VOp9Rm4'  # 同上
+                original_content_url='https://your_domain.com/path/to/image.jpg',  # 替換成你存储的本地图像的URL
+                preview_image_url='https://your_domain.com/path/to/image.jpg'  # 同上
             )
             line_bot_api.reply_message(event.reply_token, image_message)
         else:
@@ -127,4 +110,3 @@ def calculate_mbti(answers):
 
 if __name__ == "__main__":
     app.run()
-
