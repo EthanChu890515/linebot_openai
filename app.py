@@ -13,7 +13,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('yOBTbdC80uJmcmPQDFW+20TWectJYFzIkXoThbUVsi0Et9jQXecQWnDoK4UzUShO1Q+HoFNimovw1X+zqAhGbaREvHsKm/f0iLIJn9/sP0UWe4I884BgKV+iC5TUKIQRRPA96p02d7OJjoMdnCioowdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('29f84578040cbbb8466a96bcf2c02972')
 
-# MBTI 问卷问题
+# MBTI 問卷問題
 mbti_questions = [
     "在社交場合中，你更喜歡與人們親近交談（E），還是更喜歡獨自思考（I）？（A. 與人親自交談 / B. 獨自思考）",
     "你更偏向於通過直覺（N）還是通過感覺（S）來認識和理解世界？（A. 直覺 / B. 感覺）",
@@ -21,19 +21,19 @@ mbti_questions = [
     "你更傾向於有明確企劃（J）還是更喜歡靈活應對（P）？（A. 明確計畫 / B. 靈活應對）"
 ]
 
-# 處存用戶回答的字典
+# 儲存用戶回答的資訊
 mbti_user_answers = {}
 
 # MBTI 结果和描述
 mbti_results = {
-    "INTJ": "你可能是一个獨立、思想深邃的人，善於分析和解決问题。",
-    "INTP": "你可能是一个理性、好奇的人，喜歡獨自探索和思考。",
-    "ENTJ": "你可能是一个果斷、領導能力强的人，善於組織和規劃。",
-    "ENTP": "你可能是一个充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
+    "INTJ": "你可能是一個獨立、思想深邃的人，善於分析和解決问题。",
+    "INTP": "你可能是一個理性、好奇的人，喜歡獨自探索和思考。",
+    "ENTJ": "你可能是一個果斷、領導能力強的人，善於組織和規劃。",
+    "ENTP": "你可能是一個充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
     # 其他 MBTI 類型的結果...
 }
 
-# 处理 LINE Webhook 请求
+# 處理 LINE Webhook 請求
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
@@ -44,7 +44,7 @@ def callback():
         abort(400)
     return 'OK'
 
-# 处理文本消息事件
+# 處理文本消息事件
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_id = event.source.user_id
@@ -68,13 +68,13 @@ def handle_message(event):
         next_question = mbti_questions[current_question_index]
         line_bot_api.reply_message(event.reply_token, TextSendMessage(next_question))
     else:
-        # 计算 MBTI 结果
+        # 計算 MBTI 结果
         mbti_type = calculate_mbti(mbti_user_answers[user_id])
         if mbti_type in mbti_results:
             result_message = mbti_results[mbti_type]
-            # 发送 MBTI 结果的图像
+            # 發送 MBTI 結果的QR
             image_message = ImageSendMessage(
-                original_content_url='https://github.com/EthanChu890515/linebot_openai/blob/master/2024-05-13%20(1).png?raw=true',  # 替換成你存储的本地图像的URL
+                original_content_url='https://github.com/EthanChu890515/linebot_openai/blob/master/2024-05-13%20(1).png?raw=true',  # 儲存的本地圖片檔的URL
                 preview_image_url='https://github.com/EthanChu890515/linebot_openai/blob/master/2024-05-13%20(1).png?raw=true'  # 同上
             )
             line_bot_api.reply_message(event.reply_token, image_message)
@@ -82,7 +82,7 @@ def handle_message(event):
             result_message = "無法計算您的 MBTI 結果。請重新開始測試。"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(result_message))
 
-# 计算 MBTI 结果的函数
+# 計算 MBTI 结果的函数
 def calculate_mbti(answers):
     mbti_type = ""
     for i in range(len(answers)):
