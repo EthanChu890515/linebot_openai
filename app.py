@@ -74,8 +74,8 @@ def handle_message(event):
             result_message = mbti_results[mbti_type]
             # 发送 MBTI 结果的图像
             image_message = ImageSendMessage(
-                original_content_url='https://your_domain.com/path/to/image.jpg',  # 替換成你存储的本地图像的URL
-                preview_image_url='https://your_domain.com/path/to/image.jpg'  # 同上
+                original_content_url='https://github.com/EthanChu890515/linebot_openai/blob/master/2024-05-13%20(1).png?raw=true',  # 替換成你存储的本地图像的URL
+                preview_image_url='https://github.com/EthanChu890515/linebot_openai/blob/master/2024-05-13%20(1).png?raw=true'  # 同上
             )
             line_bot_api.reply_message(event.reply_token, image_message)
         else:
