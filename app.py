@@ -109,6 +109,12 @@ def callback():
         abort(400)
     return 'OK'
 
+# 處理用戶加入好友事件
+@handler.add(FollowEvent)
+def handle_follow(event):
+    welcome_message = "歡迎使用MBTI機器人！如果要開始測驗，請輸入\"開始\"。"
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(welcome_message))
+
 # 處理文本消息事件
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -120,8 +126,8 @@ def handle_message(event):
 
     current_question_index = len(mbti_user_answers[user_id])
 
-    # 如果用戶重新開始新的一輪測試，清除之前的回答
-    if msg.lower() == '重新開始測試':
+    # 如果用戶輸入"開始"或"重新開始測試"
+    if msg.lower() in ['開始', '重新開始測試']:
         mbti_user_answers[user_id] = []
         current_question_index = 0
         line_bot_api.reply_message(event.reply_token, TextSendMessage(mbti_questions[0]))
@@ -148,7 +154,8 @@ def handle_message(event):
                 )
                 line_bot_api.reply_message(event.reply_token, [
                     TextSendMessage(result_message),
-                    image_message
+                    image_message,
+                    TextSendMessage("如果要重新測驗可以輸入重新開始測試。")
                 ])
             else:
                 result_message = "無法計算您的 MBTI 結果。請重新開始測試。"
@@ -175,4 +182,5 @@ def calculate_mbti(answers):
 
 if __name__ == "__main__":
     app.run(port=5000)
+
 
