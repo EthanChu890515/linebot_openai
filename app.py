@@ -124,7 +124,7 @@ mbti_results = {
     },
     "INFJ": {
         "description": "你的MBTI為INFJ，你可能是一個理想主義者，具有強烈的直覺和同情心。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/INFJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2811.JPG?raw=true"
     },
     "INFP": {
         "description": "你的MBTI為INFP，你可能是一個理想主義者，關心他人的感受和內心世界。",
