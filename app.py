@@ -13,7 +13,7 @@ handler = WebhookHandler(os.getenv('29f84578040cbbb8466a96bcf2c02972'))
 
 # 定義MBTI問題
 mbti_questions_full = [
-    "當你參加一個聚會時，你更傾向於：\na) 與很多人交流，感覺充滿能量\nb) 和幾個熟悉的朋友深度交談，感覺放鬆",
+    "當你參加一個聚會時，你更傾向於：\na) 與很多人交流，感覺充滿能量\nb) 與幾個熟悉的朋友深度交談，感覺放鬆",
     "當你面對新任務時，你更傾向於：\na) 注意具體的細節和實際步驟\nb) 想像整體的可能性和未來的結果",
     "當你做決定時，你更傾向於：\na) 根據邏輯和客觀事實\nb) 根據個人價值和他人感受來決定",
     "當你安排日程時，你更傾向於：\na) 提前計劃，喜歡有條理和結構\nb) 隨機應變，喜歡靈活和自發性",
@@ -108,15 +108,15 @@ mbti_user_questions = {}
 mbti_results = {
     "INTJ": {
         "description": "你的MBTI為INTJ，你可能是一個獨立、思想深邃的人，善於分析和解決問題。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/INTJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2815.JPG?raw=true"
     },
     "INTP": {
         "description": "你的MBTI為INTP，你可能是一個理性、好奇的人，喜歡獨自探索和思考。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/INTP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2814.JPG?raw=true"
     },
     "ENTJ": {
         "description": "你的MBTI為ENTJ，你可能是一個果斷、領導能力強的人，善於組織和規劃。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ENTJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2813.JPG?raw=true"
     },
     "ENTP": {
         "description": "你的MBTI為ENTP，你可能是一個充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
@@ -140,35 +140,35 @@ mbti_results = {
     },
     "ISTJ": {
         "description": "你的MBTI為ISTJ，你可能是一個實事求是、責任感強的人，重視傳統和穩定。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ISTJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2815.JPG?raw=true"
     },
     "ISFJ": {
         "description": "你的MBTI為ISFJ，你可能是一個細心周到、富有同情心的人，重視和諧和合作。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ISFJ.jpg?raw=true"
+        "image_url": "https://raw.githubusercontent.com/EthanChu890515/linebot_openai/b876ff25f91635ab98c28d7a1ee77a3478196a9b/IMG_0739.JPG"
     },
     "ESTJ": {
         "description": "你的MBTI為ESTJ，你可能是一個實幹型的人，喜歡組織和管理工作，注重效率和結果。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ESTJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2816.JPG?raw=true"
     },
     "ESFJ": {
         "description": "你的MBTI為ESFJ，你可能是一個熱心助人、樂於奉獻的人，重視他人的需求和感受。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ESFJ.jpg?raw=true"
+        "image_url": "https://raw.githubusercontent.com/EthanChu890515/linebot_openai/b876ff25f91635ab98c28d7a1ee77a3478196a9b/IMG_0740.JPG"
     },
     "ISTP": {
         "description": "你的MBTI為ISTP，你可能是一個獨立、實用的人，喜歡解決具體的問題和挑戰。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ISTP.jpg?raw=true"
+        "image_url": "https://raw.githubusercontent.com/EthanChu890515/linebot_openai/b876ff25f91635ab98c28d7a1ee77a3478196a9b/IMG_0741.JPG"
     },
     "ISFP": {
         "description": "你的MBTI為ISFP，你可能是一個溫和、靈活的人，喜歡追求個人的自由和創造力。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ISFP.jpg?raw=true"
+        "image_url": "https://raw.githubusercontent.com/EthanChu890515/linebot_openai/b876ff25f91635ab98c28d7a1ee77a3478196a9b/IMG_0742.JPG"
     },
     "ESTP": {
         "description": "你的MBTI為ESTP，你可能是一個熱愛冒險、富有活力的人，喜歡嘗試新的經歷和挑戰。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ESTP.jpg?raw=true"
+        "image_url": "https://raw.githubusercontent.com/EthanChu890515/linebot_openai/b876ff25f91635ab98c28d7a1ee77a3478196a9b/IMG_0743.JPG"
     },
     "ESFP": {
         "description": "你的MBTI為ESFP，你可能是一個活潑、熱情的人，喜歡與他人互動和享受生活。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ESFP.jpg?raw=true"
+        "image_url": "https://raw.githubusercontent.com/EthanChu890515/linebot_openai/b876ff25f91635ab98c28d7a1ee77a3478196a9b/IMG_0744.JPG"
     }
 }
 
