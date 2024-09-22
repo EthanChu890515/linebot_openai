@@ -8,7 +8,7 @@ import random
 app = Flask(__name__)
 
 # Channel Access Token 和 Channel Secret
-line_bot_api = LineBotApi(os.getenv('yOBTbdC80uJmcmPQDFW+20TWectJYFzIkXoThbUVsi0Et9jQXecQWnDoK4UzUShO1Q+HoFNimovw1X+zqAhGbaREvHsKm/f0iLIJn9/sP0UWe4I884BgKV+iC5TUKIQRRPA96p02d7OJjoMdnCioowdB04t89/1O/w1cDnyilFU='))
+line_bot_api = LineBotApi(os.getenv('P0jziWsfAtSdKT6cGiEBFEgdRVda8eANzzuIlDqgc5qSOSAnVSbkiFVRidV1lV381Q+HoFNimovw1X+zqAhGbaREvHsKm/f0iLIJn9/sP0XCD0B7RfgHjLWnig7VV7PYjUbcBWftjy2tvFoM+QsljQdB04t89/1O/w1cDnyilFU='))
 handler = WebhookHandler(os.getenv('29f84578040cbbb8466a96bcf2c02972'))
 
 # 定義MBTI問題
