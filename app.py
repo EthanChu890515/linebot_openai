@@ -128,7 +128,7 @@ mbti_results = {
     },
     "INFP": {
         "description": "你的MBTI為INFP，你可能是一個理想主義者，關心他人的感受和內心世界。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/INFP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2810.JPG?raw=true"
     },
     "ENFJ": {
         "description": "你的MBTI為ENFJ，你可能是一個富有魅力和感染力的領袖，善於激勵和引導他人。",
