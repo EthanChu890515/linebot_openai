@@ -136,7 +136,7 @@ mbti_results = {
     },
     "ENFP": {
         "description": "你的MBTI為ENFP，你可能是一個充滿熱情和創造力的人，喜歡探索新的可能性。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ENFP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2808.JPG?raw=true"
     },
     "ISTJ": {
         "description": "你的MBTI為ISTJ，你可能是一個實事求是、責任感強的人，重視傳統和穩定。",
