@@ -120,7 +120,7 @@ mbti_results = {
     },
     "ENTP": {
         "description": "你的MBTI為ENTP，你可能是一個充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ENTP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/IMG_2812.JPG?raw=true"
     },
     "INFJ": {
         "description": "你的MBTI為INFJ，你可能是一個理想主義者，具有強烈的直覺和同情心。",
