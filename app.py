@@ -12,7 +12,7 @@ line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # 定義MBTI問題
 mbti_questions_full = [
-    "當你參加一個聚會時，你更傾向於：\na) 與很多人交流，感覺充滿能量\nb) 和幾個熟悉的朋友深度交談，感覺放鬆",
+    "當你參加一個聚會時，你更傾向於：\na) 與很多人交流，感覺充滿能量\nb) 與幾個熟悉的朋友深度交談，感覺放鬆",
     "當你面對新任務時，你更傾向於：\na) 注意具體的細節和實際步驟\nb) 想像整體的可能性和未來的結果",
     "當你做決定時，你更傾向於：\na) 根據邏輯和客觀事實\nb) 根據個人價值和他人感受來決定",
     "當你安排日程時，你更傾向於：\na) 提前計劃，喜歡有條理和結構\nb) 隨機應變，喜歡靈活和自發性",
