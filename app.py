@@ -174,11 +174,7 @@ mbti_results = {
 def handle_message(event):
     user_message = event.message.text
 
-    # 檢查用戶的輸入是否為 "兇手是作家"
-    if user_message == "兇手是作家":
-        reply_message = "答案正確，恭喜破關！"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        return
+
 
 @app.route("/")
 def home():
