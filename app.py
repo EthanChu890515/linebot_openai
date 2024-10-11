@@ -239,17 +239,13 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="無法計算您的 MBTI 結果。重新開始測試。")
+                TextSendMessage(text="無法計算您的 MBTI 結果。請重新開始測試。")
             )
     else:
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='歡迎使用MBTI機器人！如果要開始測驗，請輸入"開始"。')
         )
-        if user_message == "兇手是作家":
-        reply_message = "答案正確，恭喜破關！"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        return
 
 def send_question_with_buttons(reply_token, question):
     question_parts = question.split("\na) ")
