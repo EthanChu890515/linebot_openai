@@ -8,8 +8,8 @@ import random
 app = Flask(__name__)
 
 # Channel Access Token 和 Channel Secret
-line_bot_api = LineBotApi(os.getenv('BAOO5d2w5GbwWu1+++MxCdrQat1buFW/Ica8ulUntNWWwhHa4wkOlEnHYgEGknmZHdS1fvPNUp6z5wAlRZPpXI1oY536eGHZHQCdw8NCcd819lwLP+aPGIYLbM+lZLfgJ5N922fUHavOy8xsP/ykKAdB04t89/1O/w1cDnyilFU='))
-handler = WebhookHandler(os.getenv('dfd217ffe677d2a85f11d1c54c1542ad'))
+line_bot_api = LineBotApi(os.getenv('+LEoj8g60Oawb1KbB02SKZ6jceJfWxuSNss1rA3AgGv4UCfoNhmpK6y/KixA7gS+aKlqSTkHofOmp7isWgQJZwu/HgoI4gVGJQwPVlgJDxeZ1XyidsfPo6UjsgVzqbIpR8Hbqv3YgiekI/bkOYlGtgdB04t89/1O/w1cDnyilFU='))
+handler = WebhookHandler(os.getenv('18cb9e151d71f3a213cd59dc721043fd'))
 
 # 定義MBTI問題
 mbti_questions_full = [
