@@ -170,7 +170,10 @@ mbti_results = {
         "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ESFP.jpg?raw=true"
     }
 }
-
+if user_message == "兇手是作家":
+        reply_message = "答案正確，恭喜破關！"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        return
 @app.route("/")
 def home():
     return "Hello, this is the MBTI Line Bot application. Please use the appropriate endpoint."
@@ -246,10 +249,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text='歡迎使用MBTI機器人！如果要開始測驗，請輸入"開始"。')
         )
-          if user_message == "兇手是作家":
-        reply_message = "答案正確，恭喜破關！"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        return
+          
 
 
 def send_question_with_buttons(reply_token, question):
