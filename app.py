@@ -10,7 +10,6 @@ app = Flask(__name__)
 # Channel Access Token 和 Channel Secret
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
-
 # 定義MBTI問題
 mbti_questions_full = [
     "當你參加一個聚會時，你更傾向於：\na) 與很多人交流，感覺充滿能量\nb) 和幾個熟悉的朋友深度交談，感覺放鬆",
@@ -194,26 +193,23 @@ def callback():
 # 處理用戶加入好友事件
 @handler.add(FollowEvent)
 def handle_follow(event):
-    # 發送帶有按鈕的選擇消息
-    send_start_buttons(event.reply_token)
-
+    welcome_message = "歡迎使用MBTI機器人！如果要開始測驗，請輸入\"開始\"。"
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(welcome_message))
 
 # 處理文本消息事件
-@handler.add(PostbackEvent)
-def handle_postback(event):
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
     user_id = event.source.user_id
-    
-    if event.data == "start_test":  # 用戶選擇開始測驗
+    user_message = event.message.text.lower()
+
+    if user_id not in mbti_user_answers:
+        mbti_user_answers[user_id] = []
+
+    if user_message in ["開始", "重新開始測試"]:
         mbti_user_questions[user_id] = select_random_questions()
         mbti_user_answers[user_id] = []
         question = mbti_user_questions[user_id][0]
         send_question_with_buttons(event.reply_token, question)
-    
-    elif event.data == "view_explanation":  # 用戶選擇查看說明
-        explanation = "這是一個MBTI測驗，通過回答問題來判斷你的性格類型。"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=explanation))
-
-    # 處理正在進行的測驗
     elif user_id in mbti_user_questions:
         answers = mbti_user_answers[user_id]
         questions = mbti_user_questions[user_id]
@@ -248,9 +244,8 @@ def handle_postback(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='歡迎使用MBTI機器人！請選擇以下選項：\na) 開始測驗\nb) 查看說明')
+            TextSendMessage(text='歡迎使用MBTI機器人！如果要開始測驗，請輸入"開始"。')
         )
-
 
 def send_question_with_buttons(reply_token, question):
     question_parts = question.split("\na) ")
