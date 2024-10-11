@@ -194,8 +194,12 @@ def callback():
 # 處理用戶加入好友事件
 @handler.add(FollowEvent)
 def handle_follow(event):
-    welcome_message = "歡迎使用MBTI機器人！如果要開始測驗，請輸入\"開始\"。"
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(welcome_message))
+    # 定義問題和選項
+    question = "如果要開始測驗，請選擇以下選項：\na) 開始測驗\nb) 查看說明"
+    
+    # 發送帶有按鈕的問題
+    send_question_with_buttons(event.reply_token, question)
+
 
 # 處理文本消息事件
 @handler.add(MessageEvent, message=TextMessage)
