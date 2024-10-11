@@ -108,67 +108,67 @@ mbti_user_questions = {}
 mbti_results = {
     "INTJ": {
         "description": "你的MBTI為INTJ，你可能是一個獨立、思想深邃的人，善於分析和解決問題。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/INTJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/INTJ.jpg?raw=true"
     },
     "INTP": {
         "description": "你的MBTI為INTP，你可能是一個理性、好奇的人，喜歡獨自探索和思考。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/INTP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/INTP.jpg?raw=true"
     },
     "ENTJ": {
         "description": "你的MBTI為ENTJ，你可能是一個果斷、領導能力強的人，善於組織和規劃。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ENTJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ESTJ.jpg?raw=true"
     },
     "ENTP": {
         "description": "你的MBTI為ENTP，你可能是一個充滿創意、善於挑戰傳統的人，喜歡嘗試新的事物。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ENTP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ENTP.jpg?raw=true"
     },
     "INFJ": {
         "description": "你的MBTI為INFJ，你可能是一個理想主義者，具有強烈的直覺和同情心。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/INFJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/INFJ.jpg?raw=true"
     },
     "INFP": {
         "description": "你的MBTI為INFP，你可能是一個理想主義者，關心他人的感受和內心世界。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/INFP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/INFP.jpg?raw=true"
     },
     "ENFJ": {
         "description": "你的MBTI為ENFJ，你可能是一個富有魅力和感染力的領袖，善於激勵和引導他人。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ENFJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ENFJ.jpg?raw=true"
     },
     "ENFP": {
         "description": "你的MBTI為ENFP，你可能是一個充滿熱情和創造力的人，喜歡探索新的可能性。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ENFP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ENFP.jpg?raw=true"
     },
     "ISTJ": {
         "description": "你的MBTI為ISTJ，你可能是一個實事求是、責任感強的人，重視傳統和穩定。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ISTJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ISTJ.jpg?raw=true"
     },
     "ISFJ": {
         "description": "你的MBTI為ISFJ，你可能是一個細心周到、富有同情心的人，重視和諧和合作。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ISFJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ISFJ.jpg?raw=true"
     },
     "ESTJ": {
         "description": "你的MBTI為ESTJ，你可能是一個實幹型的人，喜歡組織和管理工作，注重效率和結果。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ESTJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ESTJ.jpg?raw=true"
     },
     "ESFJ": {
         "description": "你的MBTI為ESFJ，你可能是一個熱心助人、樂於奉獻的人，重視他人的需求和感受。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ESFJ.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ESFJ.jpg?raw=true"
     },
     "ISTP": {
         "description": "你的MBTI為ISTP，你可能是一個獨立、實用的人，喜歡解決具體的問題和挑戰。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ISTP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ISTP.jpg?raw=true"
     },
     "ISFP": {
         "description": "你的MBTI為ISFP，你可能是一個溫和、靈活的人，喜歡追求個人的自由和創造力。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ISFP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ISFP.jpg?raw=true"
     },
     "ESTP": {
         "description": "你的MBTI為ESTP，你可能是一個熱愛冒險、富有活力的人，喜歡嘗試新的經歷和挑戰。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ESTP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ESTP.jpg?raw=true"
     },
     "ESFP": {
         "description": "你的MBTI為ESFP，你可能是一個活潑、熱情的人，喜歡與他人互動和享受生活。",
-        "image_url": "https://github.com/MarrowTseng/linebot_openai/blob/master/ESFP.jpg?raw=true"
+        "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ESFP.jpg?raw=true"
     }
 }
 
