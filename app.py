@@ -194,31 +194,22 @@ def callback():
 # 處理用戶加入好友事件
 @handler.add(FollowEvent)
 def handle_follow(event):
-    # 定義問題和選項
-    question = "如果要開始測驗，請選擇以下選項：\na) 開始測驗\nb) 查看說明"
-    
-    # 發送帶有按鈕的問題
-    send_question_with_buttons(event.reply_token, question)
+    # 發送帶有按鈕的選擇消息
+    send_start_buttons(event.reply_token)
 
 
 # 處理文本消息事件
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
+@handler.add(PostbackEvent)
+def handle_postback(event):
     user_id = event.source.user_id
-    user_message = event.message.text.lower()
-
-    # 確保用戶的答案列表存在
-    if user_id not in mbti_user_answers:
-        mbti_user_answers[user_id] = []
-
-    # 處理開始測驗和查看說明的按鈕選擇
-    if user_message == "a":  # 用戶選擇開始測驗
+    
+    if event.data == "start_test":  # 用戶選擇開始測驗
         mbti_user_questions[user_id] = select_random_questions()
         mbti_user_answers[user_id] = []
         question = mbti_user_questions[user_id][0]
         send_question_with_buttons(event.reply_token, question)
-
-    elif user_message == "b":  # 用戶選擇查看說明
+    
+    elif event.data == "view_explanation":  # 用戶選擇查看說明
         explanation = "這是一個MBTI測驗，通過回答問題來判斷你的性格類型。"
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=explanation))
 
