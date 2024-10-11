@@ -239,7 +239,7 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="無法計算您的 MBTI 結果。請重新開始測試。")
+                TextSendMessage(text="無法計算您的 MBTI 結果。重新開始測試。")
             )
     else:
         line_bot_api.reply_message(
