@@ -10,6 +10,7 @@ app = Flask(__name__)
 # Channel Access Token 和 Channel Secret
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
+
 # 定義MBTI問題
 mbti_questions_full = [
     "當你參加一個聚會時，你更傾向於：\na) 與很多人交流，感覺充滿能量\nb) 與幾個熟悉的朋友深度交談，感覺放鬆",
@@ -92,13 +93,15 @@ sn_questions = [1, 2, 8, 9, 15, 16, 22, 23, 29, 30, 36, 37, 43, 44, 50, 51, 57, 
 tf_questions = [3, 4, 10, 11, 17, 18, 24, 25, 31, 32, 38, 39, 45, 46, 52, 53, 59, 60, 66, 67]
 jp_questions = [5, 6, 12, 13, 19, 20, 26, 27, 33, 34, 40, 41, 47, 48, 54, 55, 61, 62, 68, 69]
 
+
+# 選擇隨機問題的函數，確保問題不會重複
 def select_random_questions():
     selected_ei_questions = random.sample([mbti_questions_full[i] for i in ei_questions], 2)
     selected_sn_questions = random.sample([mbti_questions_full[i] for i in sn_questions], 4)
     selected_tf_questions = random.sample([mbti_questions_full[i] for i in tf_questions], 4)
     selected_jp_questions = random.sample([mbti_questions_full[i] for i in jp_questions], 4)
     return selected_ei_questions + selected_sn_questions + selected_tf_questions + selected_jp_questions
-
+    
 # 儲存用戶回答的資訊
 mbti_user_answers = {}
 mbti_user_questions = {}
@@ -170,9 +173,6 @@ mbti_results = {
         "image_url": "https://github.com/EthanChu890515/linebot_openai/blob/master/ESFP.jpg?raw=true"
     }
 }
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    user_message = event.message.text
 
 
 
@@ -183,12 +183,9 @@ def home():
 # 處理 LINE Webhook 請求
 @app.route("/callback", methods=['POST'])
 def callback():
-    # 獲取請求標頭中的簽名
     signature = request.headers['X-Line-Signature']
-    # 獲取請求正文
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
-    # 處理 webhook 正文
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
@@ -251,8 +248,6 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text='歡迎使用MBTI機器人！如果要開始測驗，請輸入"開始"。')
         )
-          
-
 
 def send_question_with_buttons(reply_token, question):
     question_parts = question.split("\na) ")
